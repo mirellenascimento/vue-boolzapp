@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>BOOLZAP</title>
+
+    <!-- FONT AWESOME 5 - gmail account -->
+    <script src="https://kit.fontawesome.com/6f40fb596f.js" crossorigin="anonymous"></script>
+
+    <!-- FONT AWESOME 4.7-->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->
+
+    <!-- BOOTSTRAP 4 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <!-- VUE -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <!-- CSS - STYLE -->
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div id="root">
+      <div class="container">
+        <div class="row">
+
+          <!-- Left -->
+          <div class="col-4" id="sidebar-contacts">
+
+              <!-- User Profile -->
+              <div class="row user-profile">
+                <div class="col flex-no-center">
+                  <img :src="userProfile.image" alt="user image">
+                  <p>{{userProfile.name}}</p>
+                </div>
+                <div class="col flex-end-center">
+                  <span><i class="fas fa-circle-notch"></i></i></span>
+                  <span><i class="fas fa-comment-alt"></i></span>
+                  <span><i class="fas fa-ellipsis-v"></i></span>
+                </div>
+              </div>
+
+              <!-- Notice alert -->
+              <div class="row notice-alert">
+                <div class="col-3 flex-end-center">
+                  <div class="flex-center-center">
+                    <span><i class="fas fa-bell-slash fa-2x"></i></span>
+                  </div>
+                </div>
+                <div class="col flex-col-no-center">
+                  <p>Get notified of new messages</p>
+                  <h5 href="#">Turn on desktop notifications</h5>
+                </div>
+              </div>
+
+              <!-- Search box -->
+              <div class="row search-box" @click="searchBoxArrow">
+                <div class="col flex-between-center">
+                  <span><i :class="searchBoxIcon"></i></span>
+                  <input type="text" name="search" @input="searchBoxFilter" v-model="searchBoxValue" value="" placeholder="Cerca o inizia una nuova chat">
+                  <button type="button" name="button">x</button>
+                </div>
+              </div>
+
+              <!-- contacts list -->
+              <div class="row contacts">
+                <ul>
+                  <li v-for="(contact, cIndex) in contactsProfile">
+                    <div class="row contact-profile flex-no-center" @click="() => chatWith(cIndex)">
+                      <div class="col-2">
+                        <img :src="contactsProfile[cIndex].image" alt="contact image">
+                      </div>
+                      <div class="col">
+                        <p>{{contactsProfile[cIndex].name}}</p>
+                        <h5>{{contactsProfile[cIndex].lastMessage}}</h5>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+          </div>
+          <div class="col" id="sidebar-messages">
+              <div class="row chat-profile flex-no-center">
+                <div class="col-1">
+                  <img :src="selectedProfile.image" alt="chat image">
+                </div>
+                <div class="col">
+                  <p>{{selectedProfile.name}}</p>
+                  <h5>{{selectedProfile.lastAcess}}</h5>
+                </div>
+                <div class="col flex-end-center">
+                  <span><i class="fas fa-search"></i></span>
+                  <span><i class="fas fa-paperclip"></i></span>
+                  <span><i class="fas fa-ellipsis-v"></i></span>
+                </div>
+              </div>
+              <div class="row chat-box">
+                <div class="col">
+
+                </div>
+              </div>
+              <div class="row message-box">
+                <div class="col flex-between-center">
+                  <span><i class="far fa-smile"></i></span>
+                  <span><i class="fas fa-paperclip"></i></span>
+                  <input type="text" name="type" value="" placeholder="Iscrivi un messaggio">
+                  <span><i class="fas fa-microphone"></i></span>
+
+                </div>
+
+              </div>
+
+
+
+          </div>
+
+
+
+        </div>
+
+      </div>
+      <!-- left section -->
+
+
+    </div>
+    <!-- MAIN SCRIPT -->
+    <script src="js/main.js" charset="utf-8"></script>
+  </body>
+</html>
