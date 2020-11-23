@@ -11,6 +11,23 @@ const myApp = new Vue({
 				image: 'img/avatar_1.jpg',
 				lastAcess: 'Ultimo accesso oggi alle ' + lastAcessTime(),
 				lastMessage: 'Hello my friend!',
+				messages: [
+					{
+						text: randomText(chatQuestions),
+						time: '12:34',
+						sentByContact: true,
+					},
+					{
+						text: randomText(chatQuestions),
+						time: '12:55',
+						sentByContact: false,
+					},
+					{
+						text: randomText(chatQuestions),
+						time: '12:34',
+						sentByContact: false,
+					}
+				],
 			},
 			{
 				name: 'Contact 02',
@@ -53,14 +70,32 @@ const myApp = new Vue({
 				image: 'img/avatar_8.jpg',
 				lastAcess: 'Ultimo accesso oggi alle ' + lastAcessTime(),
 				lastMessage: 'Hello my friend!',
-			},
-
+			}
 		],
-		selectedProfile: {
-			name: 'Contact 03',
-			image: 'img/avatar_3.jpg',
-			lastAcess: '12:56',
-		},
+		selectedProfile:			{
+						name: 'Contact 01',
+						image: 'img/avatar_1.jpg',
+						lastAcess: 'Ultimo accesso oggi alle ' + lastAcessTime(),
+						lastMessage: 'Hello my friend!',
+						messages: [
+							{
+								text: randomText(chatQuestions),
+								time: '12:34',
+								sentByContact: true,
+							},
+							{
+								text: randomText(chatQuestions),
+								time: '12:55',
+								sentByContact: false,
+							},
+							{
+								text: randomText(chatQuestions),
+								time: '12:34',
+								sentByContact: false,
+							}
+						],
+					},
+
 		searchBoxIcon:'fas fa-search',
 		searchBoxValue: '',
 		filteredProfiles: [],
@@ -76,43 +111,14 @@ const myApp = new Vue({
 			this.selectedProfile.name = this.contactsProfile[chatIndex].name;
 			this.selectedProfile.image = this.contactsProfile[chatIndex].image;
 			this.selectedProfile.lastAcess = this.contactsProfile[chatIndex].lastAcess;
-
+			this.selectedProfile.messages = this.contactsProfile[chatIndex].messages;
 		},
 
 		searchBoxFilter: function(){
-			this.filteredProfiles = this.contactsProfile.filter(function(contact){
-				return contact.name.includes('0');
+			let filteredProfiles = this.contactsProfile.filter(function(contact){
+				return contact.name.includes(this.searchBoxValue);
 			});
 			this.contactsProfile = [...filteredProfiles]
-			console.log(myApp.contactsProfile);
 		},
 	},
 })
-
-
-
-function lastAcessTime(){
-	var today = new Date();
-	var computerTime = today.getHours() + ":" + today.getMinutes()
-
-	let hours = Math.floor(Math.random()*11);
-	let minutes = Math.floor(Math.random()*59);
-
-	if (hours == today.getHours()){
-		if (minutes > today.getMinutes()){
-			myApp.selectedProfile.lastAcess = 'Ultimo accesso a ' + minutes - today.getMinutes();
-		} else{
-			myApp.selectedProfile.lastAcess = 'Ultimo accesso a ' + today.getMinutes() + 60 - minutes;
-		}
-	} else {
-		if (hours<10){
-			hours = '0'+ hours;
-		}
-		if (minutes<10){
-			minutes = '0'+ minutes;
-		}
-	}
-
-	let timeLastAcess = hours + ':' + minutes
-	return timeLastAcess;
-}
