@@ -72,7 +72,7 @@
               <div class="row contacts">
                 <ul>
                   <li v-for="(contact, cIndex) in contactsProfile">
-                    <div class="row contact-profile flex-no-center" @click="() => chatWith(cIndex)">
+                    <div class="row contact-profile flex-no-center" @click="() => chatWith(cIndex)" :class="(contact.name == selectedProfile.name)? 'grey-bg': null">
                       <div class="col-2">
                         <img :src="contactsProfile[cIndex].image" alt="contact image">
                       </div>
@@ -104,7 +104,7 @@
               <div class="row chat-box">
                 <div class="col">
                   <ul>
-                    <li v-for="(message, mesaggeIndex) in selectedProfile.messages">
+                    <li v-for="(message, messageIndex) in selectedProfile.messages">
                       <div :class="message.sentByContact? 'contact-message' : 'user-message'">
                         <div>
                           <p>{{message.text}}</p>

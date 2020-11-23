@@ -161,6 +161,10 @@ p{
   background-color: #F1F1F1B3; /* lightgrey - 2*/
 }
 
+.grey-bg{
+  background-color: #F1F1F1B3; /* lightgrey - 2*/
+}
+
 /* Right section */
 #sidebar-messages{
   min-width: 400px;
@@ -248,6 +252,7 @@ p{
   outline: none;
   color: grey;
 }
+
 
 
 

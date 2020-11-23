@@ -7,93 +7,68 @@ const myApp = new Vue({
 		},
 		contactsProfile: [
 			{
-				name: 'Contact 01',
+				name: 'Giuseppe',
 				image: 'img/avatar_1.jpg',
 				lastAcess: 'Ultimo accesso oggi alle ' + lastAcessTime(),
-				lastMessage: 'Hello my friend!',
-				messages: [
-					{
-						text: randomText(chatQuestions),
-						time: '12:34',
-						sentByContact: true,
-					},
-					{
-						text: randomText(chatQuestions),
-						time: '12:55',
-						sentByContact: false,
-					},
-					{
-						text: randomText(chatQuestions),
-						time: '12:34',
-						sentByContact: false,
-					}
-				],
+				lastMessage: '',
+				messages: chatGenerator(Math.floor(Math.random()*30), chatText, bool),
 			},
 			{
-				name: 'Contact 02',
+				name: 'Giovanni',
 				image: 'img/avatar_2.jpg',
 				lastAcess: 'Ultimo accesso oggi alle ' + lastAcessTime(),
-				lastMessage: 'Hello my friend!',
+				lastMessage: '',
+				messages: chatGenerator(Math.floor(Math.random()*30), chatText, bool),
 			},
 			{
-				name: 'Contact 03',
+				name: 'Francesco',
 				image: 'img/avatar_3.jpg',
 				lastAcess: 'Ultimo accesso oggi alle ' + lastAcessTime(),
-				lastMessage: 'Hello my friend!',
+				lastMessage: '',
+				messages: chatGenerator(Math.floor(Math.random()*30), chatText, bool),
 			},
 			{
-				name: 'Contact 04',
+				name: 'Matteo',
 				image: 'img/avatar_4.jpg',
 				lastAcess: 'Ultimo accesso oggi alle ' + lastAcessTime(),
-				lastMessage: 'Hello my friend!',
+				lastMessage: '',
+				messages: chatGenerator(Math.floor(Math.random()*30), chatText, bool),
 			},
 			{
-				name: 'Contact 05',
+				name: 'Lucio',
 				image: 'img/avatar_5.jpg',
 				lastAcess: 'Ultimo accesso oggi alle ' + lastAcessTime(),
-				lastMessage: 'Hello my friend!',
+				lastMessage: '',
+				messages: chatGenerator(Math.floor(Math.random()*30), chatText, bool),
 			},
 			{
-				name: 'Contact 06',
+				name: 'Anna',
 				image: 'img/avatar_6.jpg',
 				lastAcess: 'Ultimo accesso oggi alle ' + lastAcessTime(),
-				lastMessage: 'Hello my friend!',
+				lastMessage: '',
+				messages: chatGenerator(Math.floor(Math.random()*30), chatText, bool),
 			},
 			{
-				name: 'Contact 07',
+				name: 'Mario',
 				image: 'img/avatar_7.jpg',
 				lastAcess: 'Ultimo accesso oggi alle ' + lastAcessTime(),
-				lastMessage: 'Hello my friend!',
+				lastMessage: '',
+				messages: chatGenerator(Math.floor(Math.random()*30), chatText, bool),
 			},
 			{
-				name: 'Contact 08',
+				name: 'Paolo',
 				image: 'img/avatar_8.jpg',
 				lastAcess: 'Ultimo accesso oggi alle ' + lastAcessTime(),
-				lastMessage: 'Hello my friend!',
+				lastMessage: '',
+				messages: chatGenerator(Math.floor(Math.random()*30), chatText, bool),
 			}
 		],
 		selectedProfile:			{
-						name: 'Contact 01',
-						image: 'img/avatar_1.jpg',
+						name: 'Amadeo',
+						image: 'img/avatar_8.jpg',
 						lastAcess: 'Ultimo accesso oggi alle ' + lastAcessTime(),
-						lastMessage: 'Hello my friend!',
-						messages: [
-							{
-								text: randomText(chatQuestions),
-								time: '12:34',
-								sentByContact: true,
-							},
-							{
-								text: randomText(chatQuestions),
-								time: '12:55',
-								sentByContact: false,
-							},
-							{
-								text: randomText(chatQuestions),
-								time: '12:34',
-								sentByContact: false,
-							}
-						],
+						lastMessage: '',
+						messages: chatGenerator(Math.floor(Math.random()*30), chatText, bool),
 					},
 
 		searchBoxIcon:'fas fa-search',
@@ -120,5 +95,16 @@ const myApp = new Vue({
 			});
 			this.contactsProfile = [...filteredProfiles]
 		},
-	},
+
+		lastMessageSent: function(){
+			this.contactsProfile.forEach(function(contact){
+				contact.lastMessage = contact.messages[contact.messages.length - 1].text;
+				return contact.lastMessage;
+			});
+		},
+
+	}
 })
+
+//With this console log, the contacts at contacts list have the last message uploaded;
+console.log(myApp.lastMessageSent());

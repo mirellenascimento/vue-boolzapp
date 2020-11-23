@@ -1,13 +1,14 @@
+var bool = [true, false, true, true];
 
-var chatQuestions = [
+var chatText = [
   "Ok",
   "Perfetto.",
   "Certo!",
   "Cool!",
-  "No."
-];
-
-var frasiFatte = [
+  "No.",
+  "Assolutamente.",
+  "Dammi un po' di tempo...",
+  "Scusa, non posso rispondere adesso...",
   "Oggi ci sei, domani chissà.",
   "Si stava meglio quando si stava peggio.",
   "Il tempo vola.",
@@ -25,6 +26,7 @@ var frasiFatte = [
   "Non esistono solo il bianco e il nero, ma ci sono tante sfumature di grigio.",
   "Qui una volta era tutta campagna."
 ];
+
 
 
 
