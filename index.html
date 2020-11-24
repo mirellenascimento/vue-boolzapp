@@ -75,7 +75,7 @@
                       </div>
                       <div class="col">
                         <p>{{contact.name}}</p>
-                        <h5>{{contact.lastMessage}}</h5>
+                        <h5 v-html="contact.lastMessage"></h5>
                       </div>
                     </div>
                   </li>
@@ -107,13 +107,11 @@
               <!-- Selected contact chat -->
               <div id="chat-messages" class="row chat-box">
                 <div class="col">
-                  <p>&#128512;</p>
-
                   <ul>
                     <li v-for="(message, messageIndex) in selectedProfile.messages">
                       <div :class="message.sentByContact? 'contact-message' : 'user-message'">
                         <div>
-                          <p>{{message.text}}</p>
+                          <p v-html="message.text"></p>
                           <h5>{{message.time}}</h5>
                         </div>
                       </div>

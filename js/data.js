@@ -1,38 +1,48 @@
 var bool = [true, false, true, true];
 
 var chatEmoji = [
+  "&#128512; &#128512; &#128512;",
   "&#128512;",
-  "&#128512;",
+  "&#128513; &#128513; &#128513; &#128513; &#128513;",
   "&#128513;",
+  "&#128514; &#128514; &#128514; &#128514;",
   "&#128514;",
   "&#128515;",
+  "&#128515; &#128515;",
   "&#128516;",
-  "&#128516;",
+  "&#128516; &#128516; &#128516;",
   "&#128517;",
-  "&#128512;",
-  "&#128513;",
-  "&#128514;",
-  "&#128515;",
-  "&#128516;",
-  "&#128516;",
-  "&#128517;",
-  "&#128512;",
-  "&#128513;",
-  "&#128514;",
-  "&#128515;",
-  "&#128516;",
-  "&#128516;",
-  "&#128517;",
-  "&#128512;",
-  "&#128513;",
-  "&#128514;",
-  "&#128515;",
-  "&#128516;",
-  "&#128516;",
-  "&#128517;"
-]
+  "&#128517; &#128517; &#128517; &#128517; &#128517; &#128517; &#128517;",
+  "&#128525;",
+  "&#128525; &#128525; &#128525; &#128525; &#128525; &#128525; &#128525; &#128525; &#128525; &#128525; &#128525; &#128525;",
+  "&#128525; &#128525; &#128525;",
+  "&#128526;"
+];
 
-var chatShort = [
+var chatPoems = [
+  `Si sta come
+d’autunno
+sugli alberi
+le foglie`,
+`Poco mi serve.
+Una crosta di pane,
+un ditale di latte,
+e questo cielo
+e queste nuvole.`,
+`C’è un’ape che se posa
+su un bottone de rosa:
+lo succhia e se ne va…
+Tutto sommato, la felicità
+è una piccola cosa.`,
+`Sono fatte di lacrime e di sangue
+e d’altro ancora.
+Il cuore
+batte a sinistra.`,
+`Io vivere vorrei addormentato
+entro il dolce rumore della vita.`
+];
+
+var chatShortMessages = [
   "Ok",
   "Perfetto.",
   "Certo!",
@@ -44,6 +54,12 @@ var chatShort = [
   "Grazie",
   "per favore!",
   "Ti amo",
+  "Si si si...",
+  "Evviva!",
+  "Si",
+  "Amoreeee",
+  "Quoto.",
+  "Forse dopo..."
 ];
 
 var frasiFatte = [
@@ -62,10 +78,14 @@ var frasiFatte = [
   "Auguri e figli maschi.",
   "Ormai si passa direttamente dal cappotto alle mezze maniche",
   "Non esistono solo il bianco e il nero, ma ci sono tante sfumature di grigio.",
-  "Qui una volta era tutta campagna."
+  "Qui una volta era tutta campagna.",
+  "Al cuor non si comanda",
+  "Nella vita non si può mai sapere"
 ];
 
-const chatText = [...chatEmoji, ...chatShort, ...frasiFatte];
+const chatText = [...chatEmoji, ...chatShortMessages, ...frasiFatte, ...chatPoems];
+
+const chatShort = [...chatEmoji, ...chatShortMessages];
 
 
 
@@ -74,12 +94,9 @@ const chatText = [...chatEmoji, ...chatShort, ...frasiFatte];
 
 
 
-
-
-
-// Al cuor non si comanda.
+// .
 //
-// Nella vita non si può mai sapere.
+// .
 //
 // Quando c’è la salute, c’è tutto.
 //
