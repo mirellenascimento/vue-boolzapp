@@ -1,3 +1,5 @@
+
+//sets random time for the messages
 function lastAcessTime(){
 	var today = new Date();
 	var computerTime = today.getHours() + ":" + today.getMinutes()
@@ -5,9 +7,6 @@ function lastAcessTime(){
 	let hours = Math.floor(Math.random()*18)+5;
 	let minutes = Math.floor(Math.random()*59);
 
-  if (hours<10){
-		hours = '0'+ hours;
-	}
 	if (minutes<10){
 		minutes = '0'+ minutes;
 	}
@@ -21,7 +20,7 @@ function randomText(array) {
 };
 
 
-//chat generator
+//chat generator - generate random chats
 function chatGenerator(number, arrayText, arrayProb){
   const messages = [];
   let hours = Math.floor(Math.random()*18)+5;
@@ -30,7 +29,11 @@ function chatGenerator(number, arrayText, arrayProb){
   for (let i = 0; i < number; i++) {
     let chatText = randomText(arrayText);
     let sentBy = randomText(arrayProb);
-    minutes += Math.floor(Math.random()*10);
+    if (minutes < 20) {
+      minutes += Math.floor(Math.random()*10);
+    } else {
+      minutes += Math.floor(Math.random()*2);
+    }
 
     let message = {
       'text': chatText,

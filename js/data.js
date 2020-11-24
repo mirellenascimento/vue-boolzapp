@@ -1,6 +1,38 @@
 var bool = [true, false, true, true];
 
-var chatText = [
+var chatEmoji = [
+  "&#128512;",
+  "&#128512;",
+  "&#128513;",
+  "&#128514;",
+  "&#128515;",
+  "&#128516;",
+  "&#128516;",
+  "&#128517;",
+  "&#128512;",
+  "&#128513;",
+  "&#128514;",
+  "&#128515;",
+  "&#128516;",
+  "&#128516;",
+  "&#128517;",
+  "&#128512;",
+  "&#128513;",
+  "&#128514;",
+  "&#128515;",
+  "&#128516;",
+  "&#128516;",
+  "&#128517;",
+  "&#128512;",
+  "&#128513;",
+  "&#128514;",
+  "&#128515;",
+  "&#128516;",
+  "&#128516;",
+  "&#128517;"
+]
+
+var chatShort = [
   "Ok",
   "Perfetto.",
   "Certo!",
@@ -9,6 +41,12 @@ var chatText = [
   "Assolutamente.",
   "Dammi un po' di tempo...",
   "Scusa, non posso rispondere adesso...",
+  "Grazie",
+  "per favore!",
+  "Ti amo",
+];
+
+var frasiFatte = [
   "Oggi ci sei, domani chissà.",
   "Si stava meglio quando si stava peggio.",
   "Il tempo vola.",
@@ -27,6 +65,7 @@ var chatText = [
   "Qui una volta era tutta campagna."
 ];
 
+const chatText = [...chatEmoji, ...chatShort, ...frasiFatte];
 
 
 

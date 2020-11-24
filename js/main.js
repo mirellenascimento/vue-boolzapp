@@ -2,7 +2,7 @@ const myApp = new Vue({
 	el: '#root',
 	data:{
 		userProfile: {
-			name: 'User Name',
+			name: 'Mirelle Nascimento',
 			image: 'img/avatar_io.jpg',
 		},
 		contactsProfile: [
@@ -63,48 +63,74 @@ const myApp = new Vue({
 				messages: chatGenerator(Math.floor(Math.random()*30), chatText, bool),
 			}
 		],
-		selectedProfile:			{
-						name: 'Amadeo',
-						image: 'img/avatar_8.jpg',
-						lastAcess: 'Ultimo accesso oggi alle ' + lastAcessTime(),
-						lastMessage: '',
-						messages: chatGenerator(Math.floor(Math.random()*30), chatText, bool),
-					},
-
+		selectedProfile: null,
 		searchBoxIcon:'fas fa-search',
-		searchBoxValue: '',
+		contactSearch: '',
 		filteredProfiles: [],
+		inputMessage: '',
 	},
 
+	created(){
+		this.selectedProfile = this.contactsProfile[0];
+		this.lastMessageSent();
+		this.scrollView();
+	},
+
+	mounted() {
+	this.filteredProfiles = [...this.contactsProfile];
+},
+
 	methods:{
+		search: function() {
+      this.filteredProfiles = this.contactsProfile.filter((contact) =>
+        contact.name.toLowerCase().includes(this.contactSearch.toLowerCase())
+      );
+    },
 
 		searchBoxArrow: function(){
 			return this.searchBoxIcon = 'fas fa-arrow-left';
 		},
 
 		chatWith: function(chatIndex){
-			this.selectedProfile.name = this.contactsProfile[chatIndex].name;
-			this.selectedProfile.image = this.contactsProfile[chatIndex].image;
-			this.selectedProfile.lastAcess = this.contactsProfile[chatIndex].lastAcess;
-			this.selectedProfile.messages = this.contactsProfile[chatIndex].messages;
-		},
-
-		searchBoxFilter: function(){
-			let filteredProfiles = this.contactsProfile.filter(function(contact){
-				return contact.name.includes(this.searchBoxValue);
-			});
-			this.contactsProfile = [...filteredProfiles]
+			this.selectedProfile = this.contactsProfile[chatIndex];
 		},
 
 		lastMessageSent: function(){
 			this.contactsProfile.forEach(function(contact){
 				contact.lastMessage = contact.messages[contact.messages.length - 1].text;
-				return contact.lastMessage;
 			});
 		},
 
-	}
-})
+		scrollView: function(){
+			var div = document.getElementById("chat-messages");
+			div.scrollTop = div.scrollHeight;
+		},
 
-//With this console log, the contacts at contacts list have the last message uploaded;
-console.log(myApp.lastMessageSent());
+		send: function(){
+			var timeNow = new Date();
+			let myMessage = {
+				'text': this.inputMessage,
+				'time': timeNow.getHours() + ":" + timeNow.getMinutes(),
+				'sentByContact': false
+			};
+			this.selectedProfile.messages.push(myMessage);
+			this.scrollView();
+			this.inputMessage= '';
+
+			setTimeout(function () {
+			  var timeNow = new Date();
+				if (timeNow.getMinutes()){
+					timeNow.getMinutes() = '0'+ timeNow.getMinutes();
+				}
+				let answerMessage = {
+					'text': randomText(chatShort),
+					'time': timeNow.getHours() + ":" + timeNow.getMinutes(),
+					'sentByContact': true
+				};
+				myApp.selectedProfile.messages.push(answerMessage);
+				this.scrollView();
+			}, 3000);
+		},
+
+	}
+});

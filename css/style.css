@@ -1,3 +1,4 @@
+/* GENERAL */
 *{
   box-sizing: border-box;
   margin: 0;
@@ -16,10 +17,12 @@ h5{
   opacity: 0.5;
   border-bottom: 0;
 }
+
 p{
   margin-bottom: 0;
 }
 
+/* FLEX CLASSES */
 .flex-center-center{
   display: flex;
   justify-content: center;
@@ -49,7 +52,7 @@ p{
   justify-content: center;
 }
 
-
+/* MAIN CONTAINER */
 .container{
   width: 90%;
   max-width: 1200px;
@@ -140,9 +143,6 @@ p{
 }
 
 /* Contacts List */
-.row.contacts{
-}
-
 .contacts ul{
   list-style: none;
   margin-left: 15px;
@@ -177,12 +177,11 @@ p{
   margin-left: 10px;
 }
 
-
 /* chat box */
 .chat-box{
   height: calc(100vh - 190px);
   background-image: url(../img/mine.jpg);
-  overflow-x: hidden;
+  overflow-x: auto;
   scroll-behavior: auto;
 }
 
@@ -226,7 +225,6 @@ p{
   width: auto;
 }
 
-
 /* message box */
 .message-box{
   background-color: #f3eeea;
@@ -251,13 +249,4 @@ p{
 .message-box input:focus{
   outline: none;
   color: grey;
-}
-
-
-
-
-@media screen and (max-height: 400px) {
-  #root{
-    margin-top: 0;
-  }
 }
