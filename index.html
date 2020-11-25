@@ -13,6 +13,9 @@
     <!-- DATA -->
     <script src="js/data.js" charset="utf-8"></script>
 
+    <!-- EMOJIS -->
+    <script src="js/emojis.js" charset="utf-8"></script>
+
     <!-- FUNCTIONS -->
     <script src="js/functions.js" charset="utf-8"></script>
 
@@ -37,9 +40,9 @@
                   <p>{{userProfile.name}}</p>
                 </div>
                 <div class="col flex-end-center">
-                  <span><i class="fas fa-circle-notch"></i></i></span>
-                  <span><i class="fas fa-comment-alt"></i></span>
-                  <span><i class="fas fa-ellipsis-v"></i></span>
+                  <span href="#"><i class="fas fa-circle-notch"></i></i></span>
+                  <span href="#"><i class="fas fa-comment-alt"></i></span>
+                  <span href="#"><i class="fas fa-ellipsis-v"></i></span>
                 </div>
               </div>
 
@@ -47,7 +50,7 @@
               <div class="row notice-alert">
                 <div class="col-3 flex-end-center">
                   <div class="flex-center-center">
-                    <span><i class="fas fa-bell-slash fa-2x"></i></span>
+                    <span href="#"><i class="fas fa-bell-slash fa-2x"></i></span>
                   </div>
                 </div>
                 <div class="col flex-col-no-center">
@@ -59,7 +62,7 @@
               <!-- Search box -->
               <div class="row search-box" @click="searchBoxArrow">
                 <div class="col flex-between-center">
-                  <span><i :class="searchBoxIcon"></i></span>
+                  <span href="#"><i :class="searchBoxIcon"></i></span>
                   <input type="text" name="search" @input="search" v-model="contactSearch" value="" placeholder="Cerca o inizia una nuova chat">
                   <button type="button" name="button">x</button>
                 </div>
@@ -88,47 +91,77 @@
           <!-- Right -->
           <div class="col" id="sidebar-messages">
 
-              <!-- Selected contact profile -->
-              <div class="row chat-profile flex-no-center">
-                <div class="col-1">
-                  <img :src="selectedProfile.image" alt="chat image">
-                </div>
-                <div class="col">
-                  <p>{{selectedProfile.name}}</p>
-                  <h5>{{selectedProfile.lastAcess}}</h5>
-                </div>
-                <div class="col flex-end-center">
-                  <span><i class="fas fa-search"></i></span>
-                  <span><i class="fas fa-paperclip"></i></span>
-                  <span><i class="fas fa-ellipsis-v"></i></span>
-                </div>
+            <!-- Selected contact profile -->
+            <div class="row chat-profile flex-no-center">
+              <div class="col-1">
+                <img :src="selectedProfile.image" alt="chat image">
               </div>
+              <div class="col">
+                <p>{{selectedProfile.name}}</p>
+                <h5>{{selectedProfile.lastAcess}}</h5>
+              </div>
+              <div class="col flex-end-center">
+                <span href="#"><i class="fas fa-search"></i></span>
+                <span href="#"><i class="fas fa-paperclip"></i></span>
+                <span href="#"><i class="fas fa-ellipsis-v"></i></span>
+              </div>
+            </div>
 
-              <!-- Selected contact chat -->
-              <div id="chat-messages" class="row chat-box">
-                <div class="col">
-                  <ul>
-                    <li v-for="(message, messageIndex) in selectedProfile.messages">
-                      <div :class="message.sentByContact? 'contact-message' : 'user-message'">
-                        <div>
-                          <p v-html="message.text"></p>
-                          <h5>{{message.time}}</h5>
-                        </div>
+            <!-- Selected contact chat -->
+            <div id="chat-messages" class="row chat-box">
+              <div class="col">
+                <ul>
+                  <li v-for="(message, messageIndex) in selectedProfile.messages">
+                    <div :class="message.sentByContact? 'contact-message' : 'user-message'">
+                      <div>
+                        <span href="#"><i class="fas fa-chevron-down"></i></span>
+                        <p v-html="message.text"></p>
+                        <h5>{{message.time}}</h5>
                       </div>
-                    </li>
-                  </ul>
-                </div>
+                    </div>
+                  </li>
+                </ul>
               </div>
+            </div>
 
-              <!-- message input -->
-              <div class="row message-box">
-                <div class="col flex-between-center">
-                  <span><i class="far fa-smile"></i></span>
-                  <span><i class="fas fa-paperclip"></i></span>
-                  <input @keyup.enter="send" type="text" name="type" v-model="inputMessage" value="" placeholder="Iscrivi un messaggio">
-                  <span><i class="fas fa-microphone"></i></span>
-                </div>
+            <!-- message input -->
+            <div class="row message-box">
+              <div class="col flex-between-center">
+                <span @click="activateClass" href="#"><i class="far fa-smile"></i></span>
+                <span href="#"><i class="fas fa-paperclip"></i></span>
+                <input @keyup.enter="send" type="text" name="type" v-model="inputMessage" value="" placeholder="Iscrivi un messaggio">
+                <span href="#"><i class="fas fa-microphone"></i></span>
               </div>
+            </div>
+
+            <!-- emoji box -->
+            <div class="emoji-box" :class="activeClass">
+                <div class="row">
+                  <div class="col flex-between-center">
+                    <span href="#"><i class="fas fa-clock"></i></span>
+                    <span href="#"><i class="fas fa-smile"></i></span>
+                    <span href="#"><i class="fas fa-cat"></i></span>
+                    <span href="#"><i class="fas fa-coffee"></i></span>
+                    <span href="#"><i class="fas fa-futbol"></i></span>
+                    <span href="#"><i class="fas fa-car"></i></span>
+                    <span href="#"><i class="far fa-lightbulb"></i></span>
+                    <span href="#"><i class="fas fa-hashtag"></i></span>
+                    <span href="#"><i class="fas fa-flag"></i></span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <input type="text" name="" value="" placeholder="Cerca un emoji...">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col emojis flex-wrap">
+                    <span v-for="emoji in allEmojis">
+                      <p v-html="emoji.emoji"></p>
+                    </span>
+                  </div>
+                </div>
+
           </div>
           <!-- END right -->
 

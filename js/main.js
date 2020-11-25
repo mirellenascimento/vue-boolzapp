@@ -68,11 +68,14 @@ const myApp = new Vue({
 		contactSearch: '', // gets the value of the search box input
 		filteredProfiles: [], //deposit fot contacts filtered by the search, starts the same as contactsProfile
 		inputMessage: '', //gets the input message value
+		activeClass: '',
 	},
 
 	created(){
 		this.selectedProfile = this.contactsProfile[0]; //sets the chat when the page is just opened
-		this.lastMessageSent(); //inizializest this function
+		this.$nextTick(function(){
+			this.lastMessageSent(); //inizializest this function
+		});
 	},
 
 	mounted() {
@@ -108,6 +111,14 @@ const myApp = new Vue({
 			this.contactsProfile.forEach(function(contact){
 				contact.lastMessage = contact.messages[contact.messages.length - 1].text;
 			});
+		},
+
+		activateClass: function(){
+			if (this.activeClass === 'active'){
+				this.activeClass = '';
+			} else {
+				this.activeClass = 'active';
+			}
 		},
 
 		//makes the last messages visible for first
