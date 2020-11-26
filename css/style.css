@@ -196,6 +196,11 @@ i{
   scroll-behavior: auto;
 }
 
+.active-active{
+  display: block;
+  height: calc(100vh - 480px);
+}
+
 .chat-box li > div > div{
   position: relative;
 }
@@ -219,6 +224,10 @@ i{
 
 .chat-box ul li{
   list-style: none;
+}
+
+.active-active{
+  height: calc(100vh - 490px);
 }
 
 .contact-message > div{
@@ -278,8 +287,8 @@ i{
   position: absolute;
   left: 0;
   bottom: 65px;
-  height: 300px;
-  width: calc(100% - 15px);
+  height: 310px;
+  width: 100%;
   background-color: #f3eeea;
 }
 
@@ -309,10 +318,10 @@ i{
   font-size: 1.8rem;
   height: 220px;
   overflow-y: scroll;
-  scrollbar-width: none;
   position: absolute;
   left: 0;
   bottom: 0;
+  scrollbar-width: none;
 }
 
 .emojis span{
@@ -327,6 +336,10 @@ i{
   background-color: #f3eeea;
   height: 70px;
   padding: 0 20px;
+  position: absolute;
+  bottom: 0;
+  left: 15px;
+  width: 100%;
 }
 
 .message-box i{

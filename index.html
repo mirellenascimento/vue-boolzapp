@@ -108,7 +108,7 @@
             </div>
 
             <!-- Selected contact chat -->
-            <div id="chat-messages" class="row chat-box">
+            <div id="chat-messages" class="row chat-box" :class="activeActiveClass">
               <div class="col">
                 <ul>
                   <li v-for="(message, messageIndex) in selectedProfile.messages">
@@ -129,8 +129,8 @@
               <div class="col flex-between-center">
                 <span @click="activateClass" href="#"><i class="far fa-smile"></i></span>
                 <span href="#"><i class="fas fa-paperclip"></i></span>
-                <input @keyup.enter="send" type="text" name="type" v-model="inputMessage" value="" placeholder="Iscrivi un messaggio">
-                <span href="#"><i class="fas fa-microphone"></i></span>
+                <input @input="changeRightIcon" @keyup.enter="send" type="text" name="type" v-model="inputMessage" value="" placeholder="Iscrivi un messaggio">
+                <span href="#" @click="send"><i :class="messageRightIcon"></i></span>
               </div>
             </div>
 
@@ -156,8 +156,8 @@
                 </div>
                 <div class="row">
                   <div class="col emojis flex-wrap">
-                    <span v-for="emoji in allEmojis">
-                      <p v-html="emoji.emoji"></p>
+                    <span v-for="(emoji, eIndex) in allEmojis">
+                      <p @click="()=> placeInText(eIndex)" v-html="emoji.emoji"></p>
                     </span>
                   </div>
                 </div>
