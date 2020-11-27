@@ -128,14 +128,20 @@ const myApp = new Vue({
 		},
 
 		//selects the contact for chat
-		chatWith: function(chatIndex){
-			this.selectedProfile = this.contactsProfile[chatIndex];
+		chatWith: function(contact){
+			this.selectedProfile = contact;
 			this.$nextTick(function(){
 				this.scrollView();
 			});
 		},
 
+		//reloadPage
+		reloadPage: function(){
+    	window.location.reload();
+  	},
+
 		//sets the last message in contactsProfile
+
 		lastMessageSent: function(){
 			this.contactsProfile.forEach(function(contact){
 				contact.lastMessage = contact.messages[contact.messages.length - 1].text;

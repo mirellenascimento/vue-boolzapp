@@ -35,7 +35,7 @@
 
               <!-- User Profile -->
               <div class="row user-profile">
-                <div class="col flex-no-center">
+                <div @click="reloadPage" class="col flex-no-center">
                   <img :src="userProfile.image" alt="user image">
                   <p>{{userProfile.name}}</p>
                 </div>
@@ -71,10 +71,10 @@
               <!-- contacts list -->
               <div class="row contacts">
                 <ul>
-                  <li v-for="(contact, cIndex) in filteredProfiles">
-                    <div class="row contact-profile flex-no-center" @click="() => chatWith(cIndex)" :class="(contact.name == selectedProfile.name)? 'grey-bg': null">
+                  <li v-for="contact in filteredProfiles">
+                    <div class="row contact-profile flex-no-center" @click="() => chatWith(contact)" :class="(contact.name == selectedProfile.name)? 'grey-bg': null">
                       <div class="col-2">
-                        <img :src="contactsProfile[cIndex].image" alt="contact image">
+                        <img :src="contact.image" alt="contact image">
                       </div>
                       <div class="col">
                         <p>{{contact.name}}</p>
